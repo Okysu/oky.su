@@ -3,6 +3,9 @@ import Hero from '../components/Hero.vue'
 import ContentArea from '../components/ContentArea.vue'
 import ThemeToggle from '../components/ThemeToggle.vue'
 import LangToggle from '../components/LangToggle.vue'
+import { useI18n } from '../composables/useI18n'
+
+const { locale } = useI18n()
 </script>
 
 <template>
@@ -21,13 +24,17 @@ import LangToggle from '../components/LangToggle.vue'
       </div>
 
       <!-- 左侧 / 顶部：Hero -->
-      <section class="h-[42%] lg:h-full lg:flex-1 min-h-0 flex flex-col justify-center pt-10 lg:pt-0">
-        <Hero />
+      <section class="shrink-0 lg:shrink lg:h-full lg:flex-1 min-h-0 flex flex-col justify-center pt-14 lg:pt-0">
+        <Transition name="fade" mode="out-in">
+          <Hero :key="locale" />
+        </Transition>
       </section>
 
       <!-- 右侧 / 底部：内容区 Tabs -->
-      <section class="h-[58%] lg:h-full lg:flex-[1.15] min-h-0">
-        <ContentArea />
+      <section class="flex-1 lg:h-full lg:flex-[1.15] min-h-0 mt-2 lg:mt-0">
+        <Transition name="fade" mode="out-in">
+          <ContentArea :key="locale" />
+        </Transition>
       </section>
 
     </main>
@@ -35,16 +42,29 @@ import LangToggle from '../components/LangToggle.vue'
 </template>
 
 <style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
 @keyframes slideInLeft {
-  from { transform: translateX(-20px); }
-  to { transform: translateX(0); }
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
+
 @keyframes slideInRight {
-  from { transform: translateX(20px); }
-  to { transform: translateX(0); }
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 </style>
