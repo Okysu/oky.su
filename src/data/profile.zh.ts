@@ -6,9 +6,10 @@ export const profileZh: Profile = {
     subtitle: '来自中国江苏的全栈 & AI 开发者 🇨🇳',
     badges: ['微软学生大使 Gold'],
     about: [
-        '我构建现代 Web 应用，探索 AI 集成，并积极参与开源社区。',
-        '热衷于创造流畅的用户体验，撰写高效、可扩展的代码。',
-        '目前正在探索 HarmonyOS 应用开发与跨平台体验。'
+        '2025届软件工程专业本科生，金牌微软学生大使(Gold MLSA)。',
+        '专注于AI全栈开发，具备扎实的工程实践能力和前沿的AI应用经验。',
+        '在大语言模型与工业机器人集成项目中担任核心开发者，成功实现AI技术在工业场景的落地应用。',
+        '擅长跨技术栈协作开发，熟练掌握Python、Golang、Node.js等技术，并在团队项目中展现出优秀的沟通协调能力。'
     ],
     links: [
         { id: 'github', name: 'GitHub', url: 'https://github.com/Okysu', icon: 'github' },

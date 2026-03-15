@@ -6,9 +6,10 @@ export const profileEn: Profile = {
     subtitle: 'A Full-Stack & AI Developer from Jiangsu, China 🇨🇳',
     badges: ['Microsoft Student Ambassador Gold'],
     about: [
-        'I build modern web apps, explore AI integrations, and contribute to open-source.',
-        'Passionate about creating seamless UX and writing efficient, scalable code.',
-        'Currently exploring HarmonyOS app development and cross-platform experiences.'
+        'Software Engineering undergraduate (Class of 2025) and Gold Microsoft Learn Student Ambassador (MLSA).',
+        'Focused on full-stack AI development with solid engineering practices and cutting-edge AI application experience.',
+        'Core developer in integrating Large Language Models with industrial robots, successfully deploying AI in industrial scenarios.',
+        'Proficient in cross-stack collaborative development (Python, Golang, Node.js) with excellent communication and coordination skills.'
     ],
     links: [
         { id: 'github', name: 'GitHub', url: 'https://github.com/Okysu', icon: 'github' },

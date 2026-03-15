@@ -1,6 +1,6 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { ref, markRaw } from 'vue'
-import { useI18n } from '../composables/useI18n'
+import { useI18n } from '../../composables/useI18n'
 import TechStack from './TechStack.vue'
 import Projects from './Projects.vue'
 import GithubStats from './GithubStats.vue'
@@ -18,7 +18,7 @@ const activeTab = ref('tech')
 
 <template>
   <div class="h-full flex flex-col glass-card rounded-2xl lg:rounded-3xl overflow-hidden">
-    <!-- Tabs 导航 -->
+    <!-- Tabs 瀵艰埅 -->
     <div class="flex items-center gap-1 p-1.5 lg:p-2 bg-gray-100/60 dark:bg-gray-800/60 m-2 lg:m-3 rounded-xl shrink-0">
       <button
         v-for="tab in tabs"
@@ -35,7 +35,7 @@ const activeTab = ref('tech')
       </button>
     </div>
 
-    <!-- 内容区 -->
+    <!-- 鍐呭鍖?-->
     <div class="flex-1 min-h-0 p-3 lg:p-5 overflow-hidden">
       <Transition name="fade" mode="out-in">
         <component

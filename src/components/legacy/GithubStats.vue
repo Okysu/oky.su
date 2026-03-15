@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { useI18n } from '../composables/useI18n'
+﻿<script setup lang="ts">
+import { useI18n } from '../../composables/useI18n'
 import { BarChart3, Github } from 'lucide-vue-next'
 import { ref } from 'vue'
 

@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { useI18n } from '../composables/useI18n'
+﻿<script setup lang="ts">
+import { useI18n } from '../../composables/useI18n'
 import { FolderGit2, ArrowUpRight } from 'lucide-vue-next'
 
 const { profile, labels } = useI18n()
@@ -22,11 +22,11 @@ const { profile, labels } = useI18n()
         class="block p-4 lg:p-5 rounded-2xl glass-card group relative overflow-visible transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_8px_30px_rgb(99,102,241,0.15)] hover:border-primary-400/50 dark:hover:border-primary-500/50"
         :style="{ animation: `slideUp 0.4s ease-out forwards ${index * 0.1}s`, opacity: 0 }"
       >
-        <!-- 背景动效 -->
+        <!-- 鑳屾櫙鍔ㄦ晥 -->
         <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         
         <div class="relative z-10 flex flex-col h-full">
-          <!-- 头部：标题与箭头 -->
+          <!-- 澶撮儴锛氭爣棰樹笌绠ご -->
           <div class="flex justify-between items-start mb-2 lg:mb-3">
             <div class="pr-4">
               <h3 class="text-base lg:text-xl font-extrabold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
@@ -41,15 +41,15 @@ const { profile, labels } = useI18n()
             </div>
           </div>
 
-          <!-- 特性列表 -->
+          <!-- 鐗规€у垪琛?-->
           <ul class="text-[11px] lg:text-xs text-gray-500 dark:text-gray-400 space-y-1 lg:space-y-1.5 mb-4 flex-1">
             <li v-for="(feature, idx) in project.features" :key="idx" class="flex items-start gap-2">
-              <span class="text-primary-400 font-bold translate-y-[1px]">✦</span>
+              <span class="text-primary-400 font-bold translate-y-[1px]">鉁?/span>
               <span class="leading-relaxed">{{ feature }}</span>
             </li>
           </ul>
 
-          <!-- 技术栈 -->
+          <!-- 鎶€鏈爤 -->
           <div class="mt-auto flex flex-wrap gap-2 pt-3 border-t border-gray-100 dark:border-gray-700/50">
             <span
               v-for="tech in project.techStack"

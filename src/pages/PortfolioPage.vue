@@ -1,70 +1,102 @@
 <script setup lang="ts">
-import Hero from '../components/Hero.vue'
-import ContentArea from '../components/ContentArea.vue'
-import ThemeToggle from '../components/ThemeToggle.vue'
-import LangToggle from '../components/LangToggle.vue'
+import ProfileCard from '../components/ProfileCard.vue'
+import TechStackCard from '../components/TechStackCard.vue'
+import ProjectsShowcase from '../components/ProjectsShowcase.vue'
+import FloatingControls from '../components/FloatingControls.vue'
+import AboutCard from '../components/AboutCard.vue'
 import { useI18n } from '../composables/useI18n'
 
-const { locale } = useI18n()
+const { labels } = useI18n()
 </script>
 
 <template>
-  <div class="h-screen h-[100dvh] w-screen overflow-hidden relative selection:bg-primary-500/30">
-    <!-- 背景装饰 -->
-    <div class="absolute top-[-15%] left-[-10%] w-[45%] h-[45%] bg-primary-400/15 dark:bg-primary-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="absolute bottom-[-15%] right-[-10%] w-[45%] h-[45%] bg-purple-400/15 dark:bg-purple-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="h-screen h-[100dvh] w-screen overflow-hidden bg-gray-50 dark:bg-gray-950 font-sans text-gray-900 dark:text-gray-100 relative">
+    
+    <!-- Background Decorators -->
+    <div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-primary-500/20 rounded-full blur-[150px] mix-blend-screen pointer-events-none"></div>
+    <div class="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] bg-purple-600/20 rounded-full blur-[150px] mix-blend-screen pointer-events-none"></div>
+    
+    <FloatingControls />
 
-    <!-- 主容器 -->
-    <main v-auto-animate class="h-full w-full max-w-7xl mx-auto flex flex-col lg:flex-row p-3 sm:p-4 lg:p-6 xl:p-10 gap-3 lg:gap-8 relative z-10">
-
-      <!-- 工具栏（主题 + 语言切换） -->
-      <div class="fixed top-4 right-4 lg:top-8 lg:right-8 z-50 flex items-center gap-2 lg:gap-3">
-        <LangToggle />
-        <ThemeToggle />
+    <main class="h-full w-full max-w-[1400px] mx-auto p-4 md:p-8 overflow-y-auto hide-scrollbar pb-24">
+      <div class="bento-grid min-h-full mt-14 lg:mt-0 lg:py-10">
+        <!-- 1. Profile / Hero -->
+        <ProfileCard class="bento-profile" />
+        
+        <!-- 2. Tech Stack -->
+        <TechStackCard class="bento-tech" />
+        
+        <!-- 3. Projects Showcase -->
+        <ProjectsShowcase class="bento-projects" />
+        
+        <!-- 4. Stats / Easter Egg -->
+        <AboutCard class="bento-stats" />
       </div>
-
-      <!-- 左侧 / 顶部：Hero -->
-      <section class="shrink-0 lg:shrink lg:h-full lg:flex-1 min-h-0 flex flex-col justify-center pt-14 lg:pt-0">
-        <Transition name="fade" mode="out-in">
-          <Hero :key="locale" />
-        </Transition>
-      </section>
-
-      <!-- 右侧 / 底部：内容区 Tabs -->
-      <section class="flex-1 lg:h-full lg:flex-[1.15] min-h-0 mt-2 lg:mt-0">
-        <Transition name="fade" mode="out-in">
-          <ContentArea :key="locale" />
-        </Transition>
-      </section>
-
     </main>
   </div>
 </template>
 
-<style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+<style scoped>
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 2rem;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5rem;
+  }
 }
 
-@keyframes slideInLeft {
-  from { transform: translateX(-20px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+/* Layout Assignments */
+.bento-profile {
+  grid-column: 1 / 8;
+  grid-row: 1 / 3;
+}
+.bento-tech {
+  grid-column: 8 / 13;
+  grid-row: 1 / 3;
+}
+.bento-projects {
+  grid-column: 1 / 9;
+  grid-row: 3 / 6;
+}
+.bento-stats {
+  grid-column: 9 / 13;
+  grid-row: 3 / 6;
 }
 
-@keyframes slideInRight {
-  from { transform: translateX(20px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+/* Global Glass & Custom Classes for Children */
+:deep(.glass-card) {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.dark :deep(.glass-card), .dark .glass-card {
+  background: rgba(17, 24, 39, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.clip-shape-hex {
+  clip-path: polygon(10% 0, 100% 0, 100% 85%, 90% 100%, 0 100%, 0 15%);
+  border-radius: 0;
 }
 </style>

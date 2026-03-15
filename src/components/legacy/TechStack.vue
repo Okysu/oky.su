@@ -1,11 +1,11 @@
-<script setup lang="ts">
-import { useI18n } from '../composables/useI18n'
+﻿<script setup lang="ts">
+import { useI18n } from '../../composables/useI18n'
 import { ref } from 'vue'
 import { Code } from 'lucide-vue-next'
 
 const { profile, labels } = useI18n()
 
-// 图片加载失败时的降级处理
+// 鍥剧墖鍔犺浇澶辫触鏃剁殑闄嶇骇澶勭悊
 const failedIcons = ref<Set<string>>(new Set())
 const handleImgError = (id: string) => {
   failedIcons.value.add(id)
@@ -29,7 +29,7 @@ const handleImgError = (id: string) => {
                transition-all duration-300 hover:-translate-y-1 hover:scale-105 group cursor-default"
         :style="{ animation: `slideUp 0.3s ease-out forwards ${index * 0.05}s`, opacity: 0 }"
       >
-        <!-- 官方 devicon 图标 -->
+        <!-- 瀹樻柟 devicon 鍥炬爣 -->
         <img
           v-if="!failedIcons.has(tech.id)"
           :src="tech.iconUrl"

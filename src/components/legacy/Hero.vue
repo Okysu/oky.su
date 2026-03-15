@@ -1,12 +1,12 @@
-<script setup lang="ts">
-import { useI18n } from '../composables/useI18n'
+﻿<script setup lang="ts">
+import { useI18n } from '../../composables/useI18n'
 import { Github, Newspaper, FileText, Mail, Award } from 'lucide-vue-next'
 import { computed } from 'vue'
-import type { LinkItem } from '../data/types'
+import type { LinkItem } from '../../data/types'
 
 const { profile } = useI18n()
 
-// 映射图标名到 lucide 组件
+// 鏄犲皠鍥炬爣鍚嶅埌 lucide 缁勪欢
 const iconMap: Record<string, any> = {
   github: Github,
   newspaper: Newspaper,
@@ -16,17 +16,17 @@ const iconMap: Record<string, any> = {
 
 const getIcon = (link: LinkItem) => iconMap[link.icon] || FileText
 
-// 标题拆分
+// 鏍囬鎷嗗垎
 const titleMain = computed(() => {
-  const parts = profile.value.title.split('👋')
-  return parts[0] + '👋'
+  const parts = profile.value.title.split('馃憢')
+  return parts[0] + '馃憢'
 })
 </script>
 
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 flex flex-col justify-center min-h-0">
-      <!-- 徽章 -->
+      <!-- 寰界珷 -->
       <div v-if="profile.badges.length" class="mb-3 lg:mb-4 flex flex-wrap gap-2">
         <span
           v-for="badge in profile.badges"
@@ -40,7 +40,7 @@ const titleMain = computed(() => {
         </span>
       </div>
 
-      <!-- 标题 -->
+      <!-- 鏍囬 -->
       <h1 class="text-2xl sm:text-3xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight mb-2 lg:mb-4 leading-tight">
         <span class="text-gradient">{{ titleMain }}</span><br />
         <span class="text-gray-900 dark:text-white">I'm {{ profile.name }}</span>
@@ -50,7 +50,7 @@ const titleMain = computed(() => {
         {{ profile.subtitle }}
       </p>
 
-      <!-- 关于我 -->
+      <!-- 鍏充簬鎴?-->
       <div class="space-y-2 text-xs sm:text-sm lg:text-base text-gray-500 dark:text-gray-400 leading-relaxed">
         <p v-for="(paragraph, index) in profile.about" :key="index">
           {{ paragraph }}
@@ -58,7 +58,7 @@ const titleMain = computed(() => {
       </div>
     </div>
 
-    <!-- 社交链接 -->
+    <!-- 绀句氦閾炬帴 -->
     <div class="flex flex-wrap gap-2 lg:gap-3 pt-3 lg:pt-4 border-t border-gray-200 dark:border-gray-700/50 shrink-0">
       <a
         v-for="link in profile.links"
